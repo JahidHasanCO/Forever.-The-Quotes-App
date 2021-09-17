@@ -11,9 +11,9 @@ import kotlinx.coroutines.launch
 
 class MainViewModel(private val repository: QuotesRepository) : ViewModel(){
 
-    init {
+    fun getQuote(page: Int) {
         viewModelScope.launch(Dispatchers.IO) {
-            repository.getQuotes(1)
+            repository.getQuotes(page)
         }
     }
         val quotes: LiveData<Response<QuoteList>>

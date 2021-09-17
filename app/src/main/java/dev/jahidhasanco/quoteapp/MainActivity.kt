@@ -19,6 +19,8 @@ import dev.jahidhasanco.ui.Adapter.QuoteAdapter
 class MainActivity : AppCompatActivity() {
 
     lateinit var mainViewModel: MainViewModel
+    private var maxPage = 1
+    private var page = 1
 
     lateinit var recyclerView_MainActivity: RecyclerView
     lateinit var layoutManagerV: LinearLayoutManager
@@ -35,6 +37,7 @@ class MainActivity : AppCompatActivity() {
         swipe = findViewById(R.id.swipe)
         val repository = (application as QuoteApplication).quotesRepository
         mainViewModel = ViewModelProvider(this, MainViewModelFactory(repository)).get(MainViewModel::class.java)
+        mainViewModel.getQuote(page)
         quoteAdapter = QuoteAdapter(this)
         observeQuotes()
 
@@ -46,6 +49,8 @@ class MainActivity : AppCompatActivity() {
         }
 
         swipe.setOnRefreshListener{
+            val pageRan = (page until maxPage).random()
+            mainViewModel.getQuote(pageRan)
             observeQuotes()
             swipe.isRefreshing = false
         }
@@ -65,6 +70,7 @@ class MainActivity : AppCompatActivity() {
                         progress_Bar.visibility = View.INVISIBLE
                         recyclerView_MainActivity.visibility = View.VISIBLE
                         quoteAdapter.addQuotes(quote.results)
+                        maxPage = quote.totalPages
                     }
                 }
                 is Response.Error -> {
