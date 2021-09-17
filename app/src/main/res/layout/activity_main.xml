@@ -20,11 +20,13 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:fontFamily="@font/eater"
             android:text="Forever."
-            android:gravity="center"
-            android:textColor="@color/mainText"
-            android:textSize="15sp" />
+            android:gravity="center_vertical"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:textColor="@color/primary"
+            android:textStyle="bold"
+            android:textSize="25sp" />
 
     </LinearLayout>
 
@@ -82,16 +84,19 @@
                 app:layout_constraintTop_toBottomOf="@+id/textView">
 
                 <TextView
+                    android:id="@+id/todaysQuoteMain"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
                     android:gravity="center"
                     android:maxLines="5"
                     android:text="hello"
+                    android:textStyle="bold"
                     android:textColor="@color/primary"
                     android:textSize="30sp" />
 
                 <TextView
+                    android:id="@+id/todaysQuoteAuthor"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
@@ -133,10 +138,11 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
+                android:layout_marginBottom="30dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView4"
-                tools:listitem="@layout/single_quote"  />
+                  />
 
             <ProgressBar
                 android:id="@+id/progress_Bar"

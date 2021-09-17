@@ -23,9 +23,7 @@ class QuoteAdapter(private val context: Context) :
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val quote = quotes[position]
-        holder.quoteType_singleQuote.text= "Last Modify: ${quote.dateModified}"
         holder.quoteAuthor_singleQuote.text = quote.author
-        holder.quoteDate_singleQuote.text = "Added: ${quote.dateAdded}"
         holder.quoteMain_singleQuote.text = quote.content
 
     }
@@ -35,8 +33,6 @@ class QuoteAdapter(private val context: Context) :
     }
 
     class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val quoteType_singleQuote: TextView = itemView.findViewById(R.id.quoteType_singleQuote)
-        val quoteDate_singleQuote: TextView = itemView.findViewById(R.id.quoteDate_singleQuote)
         val quoteMain_singleQuote: TextView = itemView.findViewById(R.id.quoteMain_singleQuote)
         val quoteAuthor_singleQuote: TextView = itemView.findViewById(R.id.quoteAuthor_singleQuote)
     }
