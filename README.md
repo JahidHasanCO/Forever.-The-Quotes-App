@@ -1,4 +1,6 @@
-# Quotes-App
+![GitHub Cards Preview](https://github.com/JahidHasanCO/Quotes-App/blob/master/ART/cover.png)
+
+# 🔖Quotes-App
 A Quotes Application built to Read great people quotes easily. *Made with love ❤️ by [Jahid Hasan](https://github.com/jahidhasanco)*
 
 
