@@ -1,6 +1,5 @@
 # Quotes-App
-A Quotes Application built to Demonstrate the use of Jetpack Compose for building declarative UI in
-Android. *Made with love ❤️ by [Jahid Hasan](https://github.com/jahidhasanco)*
+A Quotes Application built to Read great people quotes easily. *Made with love ❤️ by [Jahid Hasan](https://github.com/jahidhasanco)*
 
 
 ## Built With 🛠
