@@ -21,15 +21,15 @@
             android:id="@+id/quoteType_singleQuote"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="sdfjldksjflaksdj"
-            android:textSize="13sp"
-            android:maxLines="1"
-            android:textColor="@color/textAd"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="5dp"
-            android:layout_marginRight="5dp"
             android:layout_marginLeft="5dp"
-            />
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="5dp"
+            android:fontFamily="monospace"
+            android:maxLines="1"
+            android:text="sdfjldksjflaksdj"
+            android:textColor="@color/textAd"
+            android:textSize="13sp" />
 
         <Space
             android:layout_weight="1"
@@ -40,15 +40,15 @@
             android:id="@+id/quoteDate_singleQuote"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="sdfjldksjflaksdj"
-            android:textSize="13sp"
-            android:maxLines="1"
-            android:textColor="@color/textAd"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="5dp"
-            android:layout_marginRight="5dp"
             android:layout_marginLeft="5dp"
-            />
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="5dp"
+            android:fontFamily="monospace"
+            android:maxLines="1"
+            android:text="sdfjldksjflaksdj"
+            android:textColor="@color/textAd"
+            android:textSize="13sp" />
 
     </LinearLayout>
 
@@ -56,28 +56,28 @@
         android:id="@+id/quoteMain_singleQuote"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="sdfjldksjflaksdj"
-        android:textSize="15sp"
-        android:maxLines="4"
-        android:textColor="@color/mainText"
-        android:layout_marginTop="5dp"
-        android:layout_marginBottom="5dp"
-        android:layout_marginRight="5dp"
         android:layout_marginLeft="5dp"
-        />
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginBottom="5dp"
+        android:fontFamily="monospace"
+        android:maxLines="4"
+        android:text="sdfjldksjflaksdj"
+        android:textColor="@color/mainText"
+        android:textSize="15sp" />
 
     <TextView
         android:id="@+id/quoteAuthor_singleQuote"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="sdfjldksjflaksdj"
-        android:textSize="13sp"
-        android:maxLines="1"
-        android:textColor="@color/textAd"
-        android:layout_marginTop="5dp"
-        android:layout_marginBottom="10dp"
-        android:layout_marginRight="5dp"
         android:layout_marginLeft="5dp"
-        />
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginBottom="10dp"
+        android:fontFamily="monospace"
+        android:maxLines="1"
+        android:text="sdfjldksjflaksdj"
+        android:textColor="@color/textAd"
+        android:textSize="13sp" />
 
 </LinearLayout>
