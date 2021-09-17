@@ -3,6 +3,7 @@
 # 🔖Quotes-App
 A Quotes Application built to Read great people quotes easily. *Made with love ❤️ by [Jahid Hasan](https://github.com/jahidhasanco)*
 
+[![CI](https://github.com/JahidHasanCO/Forever.-The-Quotes-App/actions/workflows/blank.yml/badge.svg)](https://github.com/JahidHasanCO/Forever.-The-Quotes-App/actions/workflows/blank.yml)
 
 ## Built With 🛠
 
