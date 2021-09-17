@@ -1,4 +1,4 @@
-package dev.jahidhasanco.quoteapp
+package dev.jahidhasanco.quoteapp.app
 
 import android.app.Application
 import dev.jahidhasanco.quoteapp.data.api.QuoteService
