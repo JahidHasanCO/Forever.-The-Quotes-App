@@ -1,9 +1,14 @@
 package dev.jahidhasanco.quoteapp.data.models
 
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 
+@Entity(tableName = "quote")
 data class Result(
+    @PrimaryKey(autoGenerate = true)
+    val quoteId: Int,
     @SerializedName("author")
     val author: String,
     @SerializedName("authorSlug")
@@ -17,7 +22,5 @@ data class Result(
     @SerializedName("_id")
     val id: String,
     @SerializedName("length")
-    val length: Int,
-    @SerializedName("tags")
-    val tags: List<String>
+    val length: Int
 )
