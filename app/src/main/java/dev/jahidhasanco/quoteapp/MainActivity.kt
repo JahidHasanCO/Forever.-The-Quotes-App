@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.ProgressBar
+import android.widget.TextView
 import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -14,12 +15,13 @@ import dev.jahidhasanco.quoteapp.app.QuoteApplication
 import dev.jahidhasanco.quoteapp.data.repository.Response
 import dev.jahidhasanco.quoteapp.data.viewmodels.MainViewModel
 import dev.jahidhasanco.quoteapp.data.viewmodels.MainViewModelFactory
+import dev.jahidhasanco.quoteapp.utils.NetworkUtils
 import dev.jahidhasanco.ui.Adapter.QuoteAdapter
 
 class MainActivity : AppCompatActivity() {
 
     lateinit var mainViewModel: MainViewModel
-    private var maxPage = 1
+    private var maxPage = 2
     private var page = 1
 
     lateinit var recyclerView_MainActivity: RecyclerView
@@ -27,6 +29,8 @@ class MainActivity : AppCompatActivity() {
     lateinit var quoteAdapter: QuoteAdapter
     private lateinit var swipe: SwipeRefreshLayout
     lateinit var progress_Bar: ProgressBar
+    lateinit var todaysQuoteMain: TextView
+    lateinit var todaysQuoteAuthor: TextView
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -35,12 +39,19 @@ class MainActivity : AppCompatActivity() {
 
         recyclerView_MainActivity = findViewById(R.id.recyclerView_MainActivity)
         progress_Bar = findViewById(R.id.progress_Bar)
+        todaysQuoteMain = findViewById(R.id.todaysQuoteMain)
+        todaysQuoteAuthor = findViewById(R.id.todaysQuoteAuthor)
         swipe = findViewById(R.id.swipe)
+
+        swipe.visibility = View.INVISIBLE
+        progress_Bar.visibility = View.VISIBLE
+
+
         val repository = (application as QuoteApplication).quotesRepository
         mainViewModel = ViewModelProvider(this, MainViewModelFactory(repository)).get(MainViewModel::class.java)
         mainViewModel.getQuote(page)
         quoteAdapter = QuoteAdapter(this)
-        observeQuotes()
+
 
         layoutManagerV = LinearLayoutManager(this)
         recyclerView_MainActivity.apply {
@@ -48,11 +59,17 @@ class MainActivity : AppCompatActivity() {
             layoutManager = layoutManagerV
             setHasFixedSize(true)
         }
+        observeQuotes()
 
         swipe.setOnRefreshListener{
             val pageRan = (page until maxPage).random()
-            mainViewModel.getQuote(pageRan)
-            observeQuotes()
+            if(NetworkUtils.isInternetAvailable(this)){
+                mainViewModel.getQuote(pageRan)
+                observeQuotes()
+            }else{
+                Toast.makeText(this,"No Internet Connection",Toast.LENGTH_SHORT).show()
+            }
+
             swipe.isRefreshing = false
         }
     }
@@ -61,22 +78,26 @@ class MainActivity : AppCompatActivity() {
         mainViewModel.quotes.observe(this, Observer {
             when(it){
                 is Response.Loading -> {
-
+                    swipe.visibility = View.INVISIBLE
                     progress_Bar.visibility = View.VISIBLE
-                    recyclerView_MainActivity.visibility = View.INVISIBLE
                 }
                 is Response.Success -> {
 
                     it.data?.let { quote ->
-                        progress_Bar.visibility = View.INVISIBLE
-                        recyclerView_MainActivity.visibility = View.VISIBLE
                         quoteAdapter.addQuotes(quote.results)
-                        maxPage = quote.totalPages
+                        todaysQuoteMain.text = quote.results[0].content
+                        todaysQuoteAuthor.text = quote.results[0].author
+                        if(quote.totalPages >= maxPage){
+                            maxPage = quote.totalPages
+                        }
+                        swipe.visibility = View.VISIBLE
+                        progress_Bar.visibility = View.INVISIBLE
                     }
+
                 }
                 is Response.Error -> {
-                    progress_Bar.visibility = View.INVISIBLE
-                    recyclerView_MainActivity.visibility = View.INVISIBLE
+                    swipe.visibility = View.INVISIBLE
+                    progress_Bar.visibility = View.VISIBLE
                     Toast.makeText(this,"${it.errorMessage}",Toast.LENGTH_SHORT).show()
                 }
             }
