@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="primary">#DB3022</color>
+    <color name="primary">#20A1B1</color>
     <color name="background">#F9F9F9</color>
     <color name="backgroundAd">#FFFFFFFF</color>
     <color name="error">#F01F0E</color>
