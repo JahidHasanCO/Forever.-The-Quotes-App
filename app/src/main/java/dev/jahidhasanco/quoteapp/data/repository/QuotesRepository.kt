@@ -47,6 +47,7 @@ class QuotesRepository(
             val quotes = quotesDatabase.quoteDao().getQuotes()
             val quoteList = QuoteList(1,1,1,quotes,1,1)
             quotesLiveData.postValue(Response.Success(quoteList))
+
         }
 
     }

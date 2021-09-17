@@ -1,11 +1,13 @@
 package dev.jahidhasanco.quoteapp
 
-import androidx.appcompat.app.AppCompatActivity
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.View
 import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -24,6 +26,7 @@ class MainActivity : AppCompatActivity() {
     private var maxPage = 2
     private var page = 1
 
+
     lateinit var recyclerView_MainActivity: RecyclerView
     lateinit var layoutManagerV: LinearLayoutManager
     lateinit var quoteAdapter: QuoteAdapter
@@ -32,6 +35,8 @@ class MainActivity : AppCompatActivity() {
     lateinit var todaysQuoteMain: TextView
     lateinit var todaysQuoteAuthor: TextView
 
+    lateinit var sharedPreferences: SharedPreferences
+    lateinit var sharedEditor: SharedPreferences.Editor
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,6 +51,8 @@ class MainActivity : AppCompatActivity() {
         swipe.visibility = View.INVISIBLE
         progress_Bar.visibility = View.VISIBLE
 
+        sharedPreferences = getPreferences(Context.MODE_PRIVATE)
+        sharedEditor = sharedPreferences.edit()
 
         val repository = (application as QuoteApplication).quotesRepository
         mainViewModel = ViewModelProvider(this, MainViewModelFactory(repository)).get(MainViewModel::class.java)
@@ -59,7 +66,22 @@ class MainActivity : AppCompatActivity() {
             layoutManager = layoutManagerV
             setHasFixedSize(true)
         }
-        observeQuotes()
+
+        if (isItFirstTime()) {
+            if(NetworkUtils.isInternetAvailable(this)){
+                observeQuotes()
+            }else{
+                sharedEditor.putBoolean("firstTime", true)
+                sharedEditor.commit()
+                sharedEditor.apply()
+                Toast.makeText(this,"No Internet Connection",Toast.LENGTH_SHORT).show()
+            }
+
+        } else {
+            observeQuotes()
+        }
+
+
 
         swipe.setOnRefreshListener{
             val pageRan = (page until maxPage).random()
@@ -73,6 +95,18 @@ class MainActivity : AppCompatActivity() {
             swipe.isRefreshing = false
         }
     }
+
+    fun isItFirstTime(): Boolean {
+        return if (sharedPreferences!!.getBoolean("firstTime", true)) {
+            sharedEditor.putBoolean("firstTime", false)
+            sharedEditor.commit()
+            sharedEditor.apply()
+            true
+        } else {
+            false
+        }
+    }
+
 
     private fun observeQuotes() {
         mainViewModel.quotes.observe(this, Observer {
