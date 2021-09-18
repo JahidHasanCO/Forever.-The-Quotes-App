@@ -9,8 +9,6 @@ A Quotes Application built to Read great people quotes easily. *Made with love â
 
 - [Kotlin](https://kotlinlang.org/) - First class and official programming language for Android
   development.
-- [Jetpack Compose](https://developer.android.com/jetpack/compose) - Jetpack Compose is Androidâ€™s
-  modern toolkit for building native UI.
 - [Coroutines](https://kotlinlang.org/docs/reference/coroutines-overview.html) - A coroutine is a
   concurrency design pattern that you can use on Android to simplify code that executes
   asynchronously.
