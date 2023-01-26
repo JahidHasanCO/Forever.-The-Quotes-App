@@ -72,6 +72,7 @@ SOFTWARE.
  -  LiveData
  -  ViewModel
  -  Swipe Refresh Layout
+ -  ViewBinding
 
  
 
