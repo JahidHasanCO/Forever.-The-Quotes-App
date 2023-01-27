@@ -40,8 +40,7 @@
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
+        android:layout_marginHorizontal="20dp"
         android:background="@drawable/dash"
         android:gravity="center"
         android:orientation="vertical"
@@ -57,7 +56,6 @@
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:gravity="center"
-            android:maxLines="5"
             android:textAppearance="@style/TextAppearance.Material3.HeadlineSmall"
             android:textStyle="bold" />
 
@@ -72,10 +70,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:layout_marginLeft="70dp"
-            android:layout_marginTop="30dp"
-            android:layout_marginRight="70dp"
-            android:layout_marginBottom="30dp"
+            android:layout_marginHorizontal="70dp"
+            android:layout_marginVertical="30dp"
             android:background="?attr/colorPrimary" />
 
         <LinearLayout

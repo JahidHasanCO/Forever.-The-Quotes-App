@@ -78,9 +78,7 @@
                         android:layout_height="wrap_content"
                         android:layout_margin="10dp"
                         android:gravity="center"
-                        android:maxLines="5"
-                        android:text=""
-                        android:textSize="30sp"
+                        android:textAppearance="@style/TextAppearance.Material3.DisplayMedium"
                         android:textStyle="bold" />
 
                     <TextView
@@ -89,16 +87,13 @@
                         android:layout_height="wrap_content"
                         android:layout_margin="10dp"
                         android:gravity="center"
-                        android:text=""
-                        android:textSize="20sp" />
+                        android:textAppearance="@style/TextAppearance.Material3.BodyMedium" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
-                        android:layout_marginLeft="70dp"
-                        android:layout_marginTop="30dp"
-                        android:layout_marginRight="70dp"
-                        android:layout_marginBottom="30dp"
+                        android:layout_marginHorizontal="70dp"
+                        android:layout_marginVertical="30dp"
                         android:background="@color/design_default_color_on_primary" />
 
                     <LinearLayout
