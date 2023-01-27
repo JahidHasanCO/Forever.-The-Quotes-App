@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -11,31 +11,22 @@
         android:background="@drawable/div_bg"
         tools:ignore="Suspicious0dp" />
 
-
     <TextView
         android:id="@+id/quoteMain_singleQuote"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="5dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginRight="5dp"
-        android:layout_marginBottom="5dp"
+        android:layout_margin="5dp"
         android:maxLines="5"
-        android:text=""
-        android:textColor="@color/primary"
-        android:textSize="20sp" />
+        android:textAppearance="@style/TextAppearance.Material3.HeadlineSmall" />
 
     <TextView
         android:id="@+id/quoteAuthor_singleQuote"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="5dp"
+        android:layout_marginHorizontal="5dp"
         android:layout_marginTop="5dp"
-        android:layout_marginRight="5dp"
         android:layout_marginBottom="10dp"
         android:maxLines="1"
-        android:text=""
-        android:textColor="@color/primary"
-        android:textSize="13sp" />
+        android:textAppearance="@style/TextAppearance.Material3.BodyMedium" />
 
 </LinearLayout>
